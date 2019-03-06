@@ -40,6 +40,7 @@ table > thead#rates-header {
 
 .table-header-sm > * {
 	margin: 1%;
+	font-weight: 300;
 }
 
 .divider {
@@ -79,6 +80,10 @@ tr.patterned-row > td {
 	margin: 0;
 }
 
+.thin-text {
+	font-weight: 300;
+}
+
 tr.patterned-row:nth-child(even) {
 	background-color: #dfdfdf;
 }
@@ -105,11 +110,20 @@ tr.patterned-row:nth-child(odd) {
 
 .reason-list {
 	margin-bottom: 2em;
+	margin-top: 0em;
 	padding: 1em;
 }
 
 ul.reason-list > li {
 	font-weight: lighter;
+}
+
+.half-top-margin {
+	margin-top: 0.5em;
+}
+
+.flat-bottom-margin {
+	margin-bottom: 0px;
 }
 
 .bank-format {
@@ -120,7 +134,7 @@ ul.reason-list > li {
 }
 
 .percentage {
-	text-align: center;
+	text-align: right;
 }
 
 .percentage::after {
@@ -162,7 +176,17 @@ section.main-topic {
 section.tab {
 	position: absolute;
 	background-color: #efefef;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	border-bottom-width: 0px;
+	border-top-color: #7f7f7f;
+	border-style: solid;
 	width: 95%;
+}
+
+section.tab > * {
+	padding: 0em 1em;
 }
 
 button {
@@ -211,6 +235,10 @@ nav.nav-bar {
 	display: flex;
 	justify-content: space-around;
 	margin: auto -15%;	
+}
+
+.pad-vert-top-1 {
+	padding-top: 1em;
 }
 
 .urbank-link {
