@@ -32,14 +32,14 @@
           });
         });
 
-        $('#login').on('click', function() {
-          console.log('Show modal!');
+        /*$('#login').on('click', function() {
           $('#login-modal').addClass('open');
         });
 
-        $('#login-modal').on('click', function() {
+        $('#login-modal').on('click', function(event) {
+          event.preventDefault();
           $(this).removeClass('open');
-        });
+        });*/
 
         $('.tab-name').on('click', function() {
           $(this).siblings('.tab-name').removeClass('selected');
@@ -171,6 +171,7 @@
       </ul>
     </div>
     </footer>
+<!--
     <div id="login-modal" class="modal">
       <div id="login-body" class="modal-content">
         <div id="login-instructions">
@@ -178,14 +179,15 @@
           <div id="close-button" />
         </div>
 
-        <div id="username-entry">
-
+        <div id="username-entry" class="form-label">
+        	<h4>Username</h4> <input type="text" class="form-field" />
         </div>
 
-        <div id="password-entry">
-
+        <div id="password-entry" class="form-label">
+        	<h4>Password</h4> <input type="password" class="form-field" />
         </div>
       </div>
     </div>
+-->
   </body>
 </html>
