@@ -1,165 +1,191 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Urbank</title>
-		<meta charset="utf-8">
-		   <link rel="stylesheet" href="index.css">
-		   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	    </meta>
-	    <script type="text/javascript">
-	    	$(document).ready(function() {
-	    		function checkDecimal(moneyValue) {
-	    			return moneyValue.toString().includes('.') ? moneyValue : `${moneyValue}.00`;
-	    		}
+  <head>
+    <title>URbank</title>
+    <meta charset="utf-8">
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+      <link rel="stylesheet" href="index.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </meta>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        function checkDecimal(moneyValue) {
+          return moneyValue.toString().includes('.') ? moneyValue : `${moneyValue}.00`;
+        }
 
-	    		$.getJSON('code-test.json', function(json) {
-	    			const sortedJson = json.sort((a, b) => b.apy - a.apy);
+        $.getJSON('code-test.json', function(json) {
+          const sortedJson = json.sort((a, b) => b.apy - a.apy);
 
-	    			$.each(sortedJson, function(i, item) {
-	    				const dataRow = $('<tr>').addClass('spread-out patterned-row urbank-black').append(
-	    					$('<td>').text(item.name).addClass('bank-format'),
-	    					$('<td>').text(item.apy).addClass('percentage'),
-	    					$('<td>').text(checkDecimal(item.earnings)).addClass('dollar-format').addClass('justify-right')
-	    				);
+          $.each(sortedJson, function(i, item) {
+            const dataRow = $('<tr>').addClass('spread-out patterned-row urbank-black').append(
+              $('<td>').text(item.name).addClass('bank-format'),
+              $('<td>').text(item.apy).addClass('percentage'),
+              $('<td>').text(checkDecimal(item.earnings)).addClass('dollar-format').addClass('justify-right')
+            );
 
 
-	    				if(i == 0) {
-	    					dataRow.addClass('emphasis');
-	    				}
+            if(i == 0) {
+              dataRow.addClass('emphasis');
+            }
 
-	    				dataRow.appendTo('#rates-layout');
-	    			});
-	    		});
+            dataRow.appendTo('#rates-layout');
+          });
+        });
 
-	    		$('.tab-name').on('click', function() {
-	    			$(this).siblings('.tab-name').removeClass('selected');
-	    			$(this).addClass('selected');
-	    			const sectionId = $(this).attr('data-target');
-	    			$(`#${sectionId}`).siblings('.tab').addClass('hidden').removeClass('selected');
-	    			$(`#${sectionId}`).addClass('selected').removeClass('hidden');
-	    		})
-	    	})
-	    </script>
-	</head>
-	<body>
-		<nav class="nav-bar hoverable">
-			<a href="#" class="image urbank-logo img-scale">
-			</a>
-			<ul>
-				<li aria-label="Home"><a href="#">Home</a></li>
-				<li aria-label="Employee"><a href="#">Employee</a></li>
-				<li aria-label="Company"><a href="#">Company</a></li>
-				<li aria-label="Services"><a href="#">Services</a></li>
-				<li aria-label="Contact"><a href="#">Contact</a></li>
-			</ul>
-		</nav>
-		<article>
-			<header>
-			  <h1 class="tagline urbank-purple emphasis">Best Bank Ever!</h1>
-			  <button class="float-right login-button urbank-purple">Login</button>
-			</header>
-			<main>
-				<aside>
-					<div class="tab-selection">
-						<button class="tab-name custom-grey selected" data-target="news">News</button><button class="tab-name custom-grey" data-target="archive">Archive</button>
-					</div>
+        $('#login').on('click', function() {
+          console.log('Show modal!');
+          $('#login-modal').addClass('open');
+        });
 
-					<div class="tab-stack">
-						<section class="tab selected custom-grey" id="news">
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-							</div>
-						</section>
-						<section class="tab hidden" id="archive">
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							</div>
-							<div class="news-entry">
-								<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							</div>
-						</section>
-					</div>
-				</aside>
-				<section class="main-topic">
-				   <p class="urbank-darkgrey">
-				   	  Pellentesque habitant morbi tristique senectus et netus et <a href="#" class="urbank-link">malesuada</a> fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris <a href="#" class="urbank-link">placerat</a> eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. 
-				   </p>
-				   <p>
-				   	<div id="bragging-rights">
-					   	<h4 class="urbank-black flat-bottom-margin">Reasons We're Awesome:</h4>
-					   	<ul class="reason-list">
-					   		<li>Lorem ipsum dolor sir amet.</li>
-					   		<li>Aliquam tincidunt mauris eu risus.</li>
-					   		<li>Lorem ipsum dolor sir amet.</li>
-					   		<li>Lorem ipsum dolor sir amet.</li>
-					   		<li>Vestibulum auctor dapibus neque.</li>
-					   	</ul>
-				   </div>
-				   	<div class="promotion">
-				   		<h4 class="urbank-purple flat-bottom-margin half-top-margin">Amazing Mobile Info</h4>
-				   		<p class="half-top-margin flat-bottom-margin half-bottom-padding width-90">
-				   			Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
-				   		</p>
-				   		<div class="image phone-img img-scale" />
-				   	</div>
-				   	<div id="phoneholder">
-				   	</div>
-				   </p>
-				</section>
-				<section class="main-topic">
-					<h1 class="tagline urbank-black">Rates <span class="divider">|</span> Check them out.</h1>
-					<table id="rates-table">
-						<thead id="rates-header">
-							<tr>
-								<th class="table-header-sm custom-grey"></th>
-								<th class="table-header-sm custom-grey"><h5>Annual Percentage Yield</h5></th>
-								<th class="table-header-sm custom-grey"><h5>Est. Earnings for 1 Year*</h5></th>
-							</tr>
-						</thead>
-						<tbody id="rates-layout" class="comparison"></tbody>
-					</table>
-					<h5 class="justify-right custom-grey thin-text half-top-margin">*Based on $50,000 deposit.</h5>
-				</section>
-			</main>
-		</article>
-		<footer>
-		  <div class="tab-topic flex-right copyright">&copy; 2018 URbank</div>
-		  <div class="nav-bar flex-left hoverable">
-			<ul>
-				<li aria-label="Home"><a href="#">Home</a></li>
-				<li aria-label="Employee"><a href="#">Employee</a></li>
-				<li aria-label="Company"><a href="#">Company</a></li>
-				<li aria-label="Services"><a href="#">Services</a></li>
-				<li aria-label="Contact"><a href="#">Contact</a></li>
-			</ul>
-		</div>
-		</footer>
-	</body>
+        $('#login-modal').on('click', function() {
+          $(this).removeClass('open');
+        });
+
+        $('.tab-name').on('click', function() {
+          $(this).siblings('.tab-name').removeClass('selected');
+          $(this).addClass('selected');
+          const sectionId = $(this).attr('data-target');
+          $(`#${sectionId}`).siblings('.tab').addClass('hidden').removeClass('selected');
+          $(`#${sectionId}`).addClass('selected').removeClass('hidden');
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="nav-bar hoverable">
+      <a href="#" class="image urbank-logo img-scale">
+      </a>
+      <ul>
+        <li aria-label="Home"><a href="#">Home</a></li>
+        <li aria-label="Employee"><a href="#">Employee</a></li>
+        <li aria-label="Company"><a href="#">Company</a></li>
+        <li aria-label="Services"><a href="#">Services</a></li>
+        <li aria-label="Contact"><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <article>
+      <header>
+        <h1 class="tagline urbank-purple emphasis">Best Bank Ever!</h1>
+        <button id="login" class="float-right login-button urbank-purple"><h4 class="emphasis">Login</h4></button>
+      </header>
+      <main>
+        <aside>
+          <div class="tab-selection">
+            <button class="tab-name custom-grey selected" data-target="news">News</button><button class="tab-name custom-grey" data-target="archive">Archive</button>
+          </div>
+
+          <div class="tab-stack">
+            <section class="tab selected custom-grey" id="news">
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+              </div>
+            </section>
+            <section class="tab hidden" id="archive">
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+              </div>
+              <div class="news-entry">
+                <h4 class="tab-topic">Lorem ipsum dolor</h4>
+              </div>
+            </section>
+          </div>
+        </aside>
+        <section class="main-topic">
+          <p class="urbank-darkgrey">
+              Pellentesque habitant morbi tristique senectus et netus et <a href="#" class="urbank-link">malesuada</a> fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris <a href="#" class="urbank-link">placerat</a> eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. 
+          </p>
+          <p>
+            <div id="bragging-rights">
+              <h4 class="urbank-black flat-bottom-margin">Reasons We're Awesome:</h4>
+              <ul class="reason-list">
+                <li>Lorem ipsum dolor sir amet.</li>
+                <li>Aliquam tincidunt mauris eu risus.</li>
+                <li>Lorem ipsum dolor sir amet.</li>
+                <li>Lorem ipsum dolor sir amet.</li>
+                <li>Vestibulum auctor dapibus neque.</li>
+              </ul>
+          </div>
+            <div class="promotion">
+              <h4 class="urbank-purple flat-bottom-margin half-top-margin">Amazing Mobile Info</h4>
+              <p class="half-top-margin flat-bottom-margin half-bottom-padding width-90">
+                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+              </p>
+              <div class="image phone-img img-scale" />
+            </div>
+            <div id="phoneholder">
+            </div>
+          </p>
+        </section>
+        <section class="main-topic">
+          <h1 class="tagline urbank-black">Rates <span class="divider">|</span> Check them out.</h1>
+          <table id="rates-table">
+            <thead id="rates-header">
+              <tr>
+                <th class="table-header-sm custom-grey"></th>
+                <th class="table-header-sm custom-grey"><h5>Annual Percentage Yield</h5></th>
+                <th class="table-header-sm custom-grey"><h5>Est. Earnings for 1 Year*</h5></th>
+              </tr>
+            </thead>
+            <tbody id="rates-layout" class="comparison"></tbody>
+          </table>
+          <h5 class="justify-right custom-grey thin-text half-top-margin">*Based on $50,000 deposit.</h5>
+        </section>
+      </main>
+    </article>
+    <footer>
+      <div class="tab-topic flex-right copyright">&copy; 2018 URbank</div>
+      <div class="nav-bar flex-left hoverable">
+      <ul>
+        <li aria-label="Home"><a href="#">Home</a></li>
+        <li aria-label="Employee"><a href="#">Employee</a></li>
+        <li aria-label="Company"><a href="#">Company</a></li>
+        <li aria-label="Services"><a href="#">Services</a></li>
+        <li aria-label="Contact"><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    </footer>
+    <div id="login-modal" class="modal">
+      <div id="login-body" class="modal-content">
+        <div id="login-instructions">
+          <h1 class="tagline urbank-black emphasis center-text">Sign In To Your Account</h1>
+          <div id="close-button" />
+        </div>
+
+        <div id="username-entry">
+
+        </div>
+
+        <div id="password-entry">
+
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
