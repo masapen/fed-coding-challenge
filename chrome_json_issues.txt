@@ -1,0 +1,2 @@
+Due to Chrome's CORS strictness, calling jQuery's getJSON to locally load the JSON file usually fails.
+This issue has not appeared in Firefox when I was working on this assessment.
