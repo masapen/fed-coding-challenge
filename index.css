@@ -54,8 +54,10 @@ table > thead#rates-header {
 }
 
 .promotion {
-	padding: 0.05em 15% 0.25em 4%;
+	padding: 0.05em 15% 0 4%;
 	background-color: #bbd8c4;
+	margin-bottom: 2em;
+	position: relative;
 }
 
 table#rates-table {
@@ -118,8 +120,24 @@ ul.reason-list > li {
 	font-weight: lighter;
 }
 
+.width-90 {
+	width: 90%;
+}
+
 .half-top-margin {
 	margin-top: 0.5em;
+}
+
+.half-bottom-margin {
+	margin-bottom: 0.5em;
+}
+
+.half-bottom-padding {
+	padding-bottom: 0.5em;
+}
+
+.flat-top-margin {
+	margin-top: 0px;
 }
 
 .flat-bottom-margin {
@@ -244,18 +262,34 @@ nav.nav-bar {
 .urbank-link {
 	color: #2d91c5;
 }
-.urbank-logo {
+
+.image {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto;
-	background-origin: padding-box;
+	background-origin: padding-box;background-position: 
+}
+
+.phone-img {
+	margin-left: 80%;
+	margin-top: -12em;
+	position: absolute;
+}
+
+.urbank-logo {
 	padding: 0.5em 0px;
 }
 
 @media screen and (min-width: 1920px) {
 	.urbank-logo.img-scale {
 		background-image: url('assets/img/urbank@2x.png');
-		width: 304px;
+		width: 208px;
+	}
+
+	.phone-img.img-scale {
+		background-image: url('assets/img/iphone@2x.png');
+		width: 208px;
+		height: 354px;
 	}
 }
 
@@ -263,6 +297,12 @@ nav.nav-bar {
 	.urbank-logo.img-scale {
 		background-image: url('assets/img/urbank.png');
 		width: 152px;
+	}
+
+	.phone-img.img-scale {
+		background-image: url('assets/img/iphone.png');
+		width: 104px;
+		height: 177px;
 	}
 }
 

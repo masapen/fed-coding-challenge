@@ -29,8 +29,6 @@
 
 	    				dataRow.appendTo('#rates-layout');
 	    			});
-
-	    			console.log(json);
 	    		});
 
 	    		$('.tab-name').on('click', function() {
@@ -45,7 +43,7 @@
 	</head>
 	<body>
 		<nav class="nav-bar">
-			<a href="#" class="urbank-logo img-scale">
+			<a href="#" class="image urbank-logo img-scale">
 			</a>
 			<ul>
 				<li aria-label="Home"><a href="#">Home</a></li>
@@ -68,11 +66,44 @@
 
 					<div class="tab-stack">
 						<section class="tab selected custom-grey" id="news">
-							<h4 class="tab-topic">Lorem ipsum dolor</h4>
-							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+							</div>
 						</section>
 						<section class="tab hidden" id="archive">
-							<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							</div>
+							<div class="news-entry">
+								<h4 class="tab-topic">Lorem ipsum dolor</h4>
+							</div>
 						</section>
 					</div>
 				</aside>
@@ -92,10 +123,13 @@
 					   	</ul>
 				   </div>
 				   	<div class="promotion">
-				   		<h4 class="urbank-purple">Amazing Mobile Info</h4>
-				   		<p>
+				   		<h4 class="urbank-purple flat-bottom-margin half-top-margin">Amazing Mobile Info</h4>
+				   		<p class="half-top-margin flat-bottom-margin half-bottom-padding width-90">
 				   			Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
 				   		</p>
+				   		<div class="image phone-img img-scale" />
+				   	</div>
+				   	<div id="phoneholder">
 				   	</div>
 				   </p>
 				</section>
