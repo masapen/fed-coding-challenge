@@ -8,14 +8,35 @@
 	    </meta>
 	    <script type="text/javascript">
 	    	$(document).ready(function() {
+	    		function checkDecimal(moneyValue) {
+	    			return moneyValue.toString().includes('.') ? moneyValue : `${moneyValue}.00`;
+	    		}
+
 	    		$.getJSON('code-test.json', function(json) {
+	    			const sortedJson = json.sort((a, b) => b.apy - a.apy);
+
+	    			$.each(sortedJson, function(i, item) {
+	    				const dataRow = $('<tr>').addClass('spread-out patterned-row urbank-black').append(
+	    					$('<td>').text(item.name).addClass('bank-format'),
+	    					$('<td>').text(item.apy).addClass('percentage'),
+	    					$('<td>').text(checkDecimal(item.earnings)).addClass('dollar-format').addClass('justify-right')
+	    				);
+
+
+	    				if(i == 0) {
+	    					dataRow.addClass('emphasis');
+	    				}
+
+	    				dataRow.appendTo('#rates-layout');
+	    			});
+
 	    			console.log(json);
 	    		});
 
 	    		$('.tab-name').on('click', function() {
-	    			console.log('Clicked');
+	    			$(this).siblings('.tab-name').removeClass('selected');
+	    			$(this).addClass('selected');
 	    			const sectionId = $(this).attr('data-target');
-	    			//$(this).parent().parent().children('.tab').not(document.getElementById(sectionId)).addClass('hidden').removeClass('selected');
 	    			$(`#${sectionId}`).siblings('.tab').addClass('hidden').removeClass('selected');
 	    			$(`#${sectionId}`).addClass('selected').removeClass('hidden');
 	    		})
@@ -36,32 +57,64 @@
 		</nav>
 		<article>
 			<header>
-			  <h1>Best Bank Ever!</h1>
+			  <h1 class="tagline urbank-purple">Best Bank Ever!</h1>
+			  <button class="float-right login-button urbank-purple">Login</button>
 			</header>
 			<main>
 				<aside>
 					<div class="tab-selection">
-						<button class="tab-name" data-target="news">News</button>
-						<button class="tab-name" data-target="archive">Archive</button>
+						<button class="tab-name custom-grey selected" data-target="news">News</button><button class="tab-name custom-grey" data-target="archive">Archive</button>
 					</div>
 
 					<div class="tab-stack">
-						<section class="tab selected" id="news">
-							<h3 class="tab-topic">Lorem Ipsum Dolor</h3>
+						<section class="tab selected custom-grey" id="news">
+							<h4 class="tab-topic">Lorem ipsum dolor</h4>
 							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
 						</section>
 						<section class="tab hidden" id="archive">
-							<h3 class="tab-topic">Lorem Ipsum Dolor</h3>
+							<h4 class="tab-topic">Lorem ipsum dolor</h4>
 						</section>
 					</div>
 				</aside>
 				<section class="main-topic">
+				   <p class="urbank-darkgrey">
+				   	  Pellentesque habitant morbi tristique senectus et netus et <a href="#" class="urbank-link">malesuada</a> fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris <a href="#" class="urbank-link">placerat</a> eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. 
+				   </p>
 				   <p>
-				   	  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. 
+				   	<h4 class="urbank-black">Reasons We're Awesome:</h4>
+				   	<ul class="reason-list">
+				   		<li>Lorem ipsum dolor sir amet.</li>
+				   		<li>Aliquam tincidunt mauris eu risus.</li>
+				   		<li>Lorem ipsum dolor sir amet.</li>
+				   		<li>Lorem ipsum dolor sir amet.</li>
+				   		<li>Vestibulum auctor dapibus neque.</li>
+				   	</ul>
+				   	<div class="promotion">
+				   		<h4 class="urbank-purple">Amazing Mobile Info</h4>
+				   		<p>
+				   			Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+				   		</p>
+				   	</div>
 				   </p>
 				</section>
+				<section class="main-topic">
+					<h1 class="tagline urbank-black">Rates <span class="divider">|</span> Check them out.</h1>
+					<table id="rates-table">
+						<thead id="rates-header">
+							<tr>
+								<th class="table-header-sm"></th>
+								<th class="table-header-sm"><h5>Annual Percentage Yield</h5></th>
+								<th class="table-header-sm"><h5>Est. Earnings for 1 Year*</h5></th>
+							</tr>
+						</thead>
+						<tbody id="rates-layout" class="comparison"></tbody>
+					</table>
+					<h5 class="justify-right">*Based on $50,000 deposit.</h5>
+				</section>
 			</main>
-			<header>2018 Urbank</header>
 		</article>
+		<footer>
+		  <div class="tab-topic">&copy; 2018 URbank</div>
+		</footer>
 	</body>
 </html>
