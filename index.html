@@ -1,13 +1,31 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Urbank</title>
 		<meta charset="utf-8">
 		   <link rel="stylesheet" href="index.css">
+		   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	    </meta>
+	    <script type="text/javascript">
+	    	$(document).ready(function() {
+	    		$.getJSON('code-test.json', function(json) {
+	    			console.log(json);
+	    		});
+
+	    		$('.tab-name').on('click', function() {
+	    			console.log('Clicked');
+	    			const sectionId = $(this).attr('data-target');
+	    			//$(this).parent().parent().children('.tab').not(document.getElementById(sectionId)).addClass('hidden').removeClass('selected');
+	    			$(`#${sectionId}`).siblings('.tab').addClass('hidden').removeClass('selected');
+	    			$(`#${sectionId}`).addClass('selected').removeClass('hidden');
+	    		})
+	    	})
+	    </script>
 	</head>
 	<body>
 		<nav class="nav-bar">
-			<img class="urbank-logo" src="assets/img/urbank.png" />
+			<a href="#" class="urbank-logo img-scale">
+			</a>
 			<ul>
 				<li aria-label="Home"><a href="#">Home</a></li>
 				<li aria-label="Employee"><a href="#">Employee</a></li>
@@ -22,10 +40,25 @@
 			</header>
 			<main>
 				<aside>
-					Here's the news tab!
+					<div class="tab-selection">
+						<button class="tab-name" data-target="news">News</button>
+						<button class="tab-name" data-target="archive">Archive</button>
+					</div>
+
+					<div class="tab-stack">
+						<section class="tab selected" id="news">
+							<h3 class="tab-topic">Lorem Ipsum Dolor</h3>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+						</section>
+						<section class="tab hidden" id="archive">
+							<h3 class="tab-topic">Lorem Ipsum Dolor</h3>
+						</section>
+					</div>
 				</aside>
-				<section>
-				   Pelleneqsue habitant morbi tristique
+				<section class="main-topic">
+				   <p>
+				   	  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. 
+				   </p>
 				</section>
 			</main>
 			<header>2018 Urbank</header>
