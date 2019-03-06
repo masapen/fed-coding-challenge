@@ -8,10 +8,10 @@ header {
 }
 
 footer {
-	bottom: 0;
-	width: 100%;
-	padding: 1% 10% 4% 7%;
 	background-color: whitesmoke;
+	display: flex;
+	justify-content: space-around;
+	padding-bottom: 3em;
 }
 
 main {
@@ -19,7 +19,7 @@ main {
 }
 
 article {
-	padding: 2% 7%;
+	padding: 2% 7% 5% 7%;
 	position: relative;
 }
 article > header > h1 {
@@ -248,12 +248,6 @@ aside > * {
 	margin: 0;
 }
 
-nav.nav-bar {
-	background-color: #318fc2;
-	display: flex;
-	justify-content: space-around;
-	margin: auto -15%;	
-}
 
 .pad-vert-top-1 {
 	padding-top: 1em;
@@ -306,30 +300,57 @@ nav.nav-bar {
 	}
 }
 
-nav.nav-bar > ul {
+
+.flex-right {
+	margin-right: auto;
+}
+
+.flex-left {
+	margin-left: auto;
+}
+
+.copyright {
+	padding-top: 1%;
+	padding-left: 7%;
+}
+
+.nav-bar {
+	display: flex;
+	justify-content: space-around;
+}
+
+nav.nav-bar {
+	background-color: #318fc2;
+	margin: auto -15%;	
+}
+
+.nav-bar > ul {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
 	display: flex;
 }
 
-nav.nav-bar > ul > li {
+.nav-bar > ul > li {
 	display: inline-block;
 	text-transform: lowercase;
 	padding: 1em 1em;
 	margin: 0em 0.1em;
 }
 
-nav.nav-bar > ul > li:hover {
-	background: #006999;
+.nav-bar.hoverable > ul > li:hover {
 	font-weight: bold;
+}
+
+nav.nav-bar.hoverable > ul > li:hover {
+	background: #006999;
 }
 
 /*
     Bolding the text changes the size of the container. 
     Make room for bold text to prevent this unwanted side-effect.
 */
-nav.nav-bar > ul > li::after {
+.nav-bar.hoverable > ul > li::after {
   display: block;
   content: attr(aria-label);
   font-weight: bold;
@@ -338,10 +359,23 @@ nav.nav-bar > ul > li::after {
   visibility: hidden;
 }
 
-nav.nav-bar > ul > li > a {
+.nav-bar > ul > li > a {
 	text-decoration: none;
-	color: white;
 	flex-shrink: 1;
+}
+
+
+nav.nav-bar > ul > li > a {
+	color: white;
+}
+
+
+footer > div.nav-bar {
+	padding-right: 7%;
+}
+
+footer > div.nav-bar > ul > li > a {
+	color: #2c93ba;
 }
 
 body {
